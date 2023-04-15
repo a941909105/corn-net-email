@@ -20,13 +20,13 @@ export async function judgeWall(): Promise<boolean> {
       resolve(true);
     });
     req.on("error", (err) => {
-      console.error("请求错误", err);
+      console.error("judgeWall:请求错误", err);
       resolve(false);
     });
     req.on("timeout", () => {
       req.abort(); // 中止请求
-      console.error("请求超时");
-      reject(false);
+      console.error("judgeWall:请求超时");
+      resolve(false);
     });
     // 发送请求
     req.end();
