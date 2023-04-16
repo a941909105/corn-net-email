@@ -16,8 +16,19 @@ vps:
   IP: 
 cron:
   sendEmail: "0 30 6 1-31 * *"
+  sendUser:
+    - a941909105@163.com
 ```
 还需要创建 development.yml和production.yml 暂时没用
 框架 webpack5 + ts
 测试环境在node:16.x
 需要安装 vnstat2.x + pnpm
+
+```
+运行命令 
+pnpm i 
+pnpm dev
+pnpm build // 打包
+pm2 start pm2.json // 通过pm2运行
+pnpm prod //命令运行
+```

@@ -15,18 +15,16 @@ export const NODE_ENV = process.env.NODE_ENV || "development";
 const YAML_CONFIG_FILENAME = NODE_ENV + ".yml";
 const YAML_COMMON_CONFIG_FILENAME = "common.yml";
 function InitEnvVariable() {
+  const publicPath = path.resolve("./public");
+  console.log("====================================");
+  console.log("publicPath", publicPath);
+  console.log("====================================");
   // 读取根目录中的YML
   const currentEnv = yaml.load(
-    readFileSync(
-      path.join(path.resolve("./public"), YAML_CONFIG_FILENAME),
-      "utf8"
-    )
+    readFileSync(path.join(publicPath, YAML_CONFIG_FILENAME), "utf8")
   ) as Record<string, any>;
   const commonEnv = yaml.load(
-    readFileSync(
-      path.join(path.resolve("./public"), YAML_COMMON_CONFIG_FILENAME),
-      "utf8"
-    )
+    readFileSync(path.join(publicPath, YAML_COMMON_CONFIG_FILENAME), "utf8")
   ) as Record<string, any>;
   return merge(commonEnv, currentEnv);
 }

@@ -30,7 +30,7 @@ module.exports = {
 
   plugins: [
     // 配置 copy-webpack-plugin 插件，将 public 目录中的文件复制到输出目录
-    new CopyWebpackPlugin({ patterns: [{ from: "public", to: "./public" }] }),
+    // new CopyWebpackPlugin({ patterns: [{ from: "public", to: "./public" }] }),
     {
       apply: (compiler) => {
         if (process.env.NODE_ENV === "production") {
