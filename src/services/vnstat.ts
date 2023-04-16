@@ -98,6 +98,21 @@ export function getVnStatData(
     });
   });
 }
+// 获取VnStat行数据
+export function getVnStatDataInline(jsonCommand = "-hg"): Promise<string> {
+  return new Promise((resolve, reject) => {
+    exec("vnstat  " + jsonCommand, (error, stdout, stderr) => {
+      if (error) {
+        return reject(new Error(`执行 vnStat 命令时出错: ${error.message}`));
+      }
+      if (stderr) {
+        return reject(new Error(`vnStat 错误输出: ${stderr}`));
+      }
+
+      resolve(stdout);
+    });
+  });
+}
 
 export function testData(): NetworkInterface[] {
   return [
